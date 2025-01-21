@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvfm8bvebk84h"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_8w6cx"]
+[ext_resource type="PackedScene" uid="uid://dotu8doe5kef3" path="res://scenes/twitch_chat_manager.tscn" id="1_62vee"]
+[ext_resource type="PackedScene" uid="uid://cddnfvs01843x" path="res://scenes/workers.tscn" id="3_motfb"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="4_kf5ew"]
+
+[sub_resource type="Gradient" id="Gradient_42aee"]
+offsets = PackedFloat32Array(0.995516)
+colors = PackedColorArray(0.298039, 0.560784, 0.878431, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1q3cv"]
+gradient = SubResource("Gradient_42aee")
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_8w6cx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_as_relative = false
+offset_right = 1152.0
+offset_bottom = 500.0
+texture = SubResource("GradientTexture2D_1q3cv")
+
+[node name="TwitchChatManager" parent="." instance=ExtResource("1_62vee")]
+
+[node name="Workers" parent="." instance=ExtResource("3_motfb")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(17.74, 215)
+anchor_mode = 0
+zoom = Vector2(1.5, 1.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.5
+offset_top = -241.565
+offset_right = 289.5
+offset_bottom = -64.565
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_kf5ew")
+theme_override_colors/font_color = Color(0.560784, 0.337255, 0.231373, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.635294)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 30
+theme_override_constants/shadow_outline_size = 30
+theme_override_font_sizes/font_size = 120
+text = "Twitch
+Workshop"
+horizontal_alignment = 1
+
+[node name="WorkerTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="connected" from="TwitchChatManager" to="." method="_on_twitch_chat_manager_connected"]
+[connection signal="timeout" from="WorkerTimer" to="." method="_on_worker_timer_timeout"]

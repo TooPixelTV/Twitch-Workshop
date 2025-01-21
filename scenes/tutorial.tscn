@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3na64sb1yieq"]
+
+[ext_resource type="Script" path="res://scenes/tutorial.gd" id="1_b5hrd"]
+[ext_resource type="Texture2D" uid="uid://bax0xvl6fot8d" path="res://assets/tuto.png" id="2_5whii"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="3_u8sdm"]
+
+[node name="Tutorial" type="CanvasLayer"]
+script = ExtResource("1_b5hrd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5whii")
+
+[node name="ContinueBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 70)
+offset_left = 826.0
+offset_top = 563.0
+offset_right = 1126.0
+offset_bottom = 633.0
+theme = ExtResource("3_u8sdm")
+theme_override_font_sizes/font_size = 56
+text = "Continue"
+
+[connection signal="pressed" from="ContinueBtn" to="." method="_on_continue_btn_pressed"]

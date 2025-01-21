@@ -1,0 +1,262 @@
+[gd_scene load_steps=14 format=3 uid="uid://dv7qyxejeg7pd"]
+
+[ext_resource type="Script" path="res://scripts/recipes.gd" id="1_33y81"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="2_b4fxf"]
+[ext_resource type="PackedScene" uid="uid://ywcdnehkuc66" path="res://scenes/crafting.tscn" id="3_t0tdk"]
+[ext_resource type="Texture2D" uid="uid://bi44fpu1j3gue" path="res://assets/sprites/ressources.png" id="4_u636o"]
+[ext_resource type="Texture2D" uid="uid://w4bsac07vfjx" path="res://assets/sprites/items/stone_pickaxe.png" id="5_popxo"]
+[ext_resource type="Texture2D" uid="uid://dmd1gc5i3n2db" path="res://assets/sprites/items/stone_axe.png" id="6_umd56"]
+[ext_resource type="Texture2D" uid="uid://bugx81t871pg" path="res://assets/sprites/arrow.png" id="7_4fyrt"]
+[ext_resource type="Texture2D" uid="uid://d3wf0veluryec" path="res://assets/sprites/items/stone_shovel.png" id="7_iol0k"]
+[ext_resource type="Texture2D" uid="uid://g6jhvj5ta2kj" path="res://assets/sprites/items/iron_pickaxe.png" id="8_wi5fm"]
+[ext_resource type="Texture2D" uid="uid://blgcgcb658s5o" path="res://assets/sprites/items/iron_axe.png" id="9_bqwr5"]
+[ext_resource type="Texture2D" uid="uid://b7af4fm317s0k" path="res://assets/sprites/items/gold_pickaxe.png" id="10_6vbwo"]
+[ext_resource type="Texture2D" uid="uid://b620ov6un33it" path="res://assets/sprites/items/iron_shovel.png" id="11_3bear"]
+[ext_resource type="Texture2D" uid="uid://gyrqnbucd6aw" path="res://assets/sprites/items/gold_axe.png" id="11_um56j"]
+
+[node name="Recipes" type="CanvasLayer"]
+script = ExtResource("1_33y81")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4, 0.2232, 0.192, 0.843137)
+metadata/_edit_lock_ = true
+
+[node name="CloseBtn" type="Button" parent="ColorRect"]
+process_mode = 3
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -90.985
+offset_right = 125.0
+offset_bottom = -18.985
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_b4fxf")
+theme_override_font_sizes/font_size = 46
+text = "CLOSE
+"
+
+[node name="Crafting" parent="." instance=ExtResource("3_t0tdk")]
+z_index = 2
+position = Vector2(176, 280)
+
+[node name="Wood" type="Sprite2D" parent="Crafting"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+
+[node name="Wood2" type="Sprite2D" parent="Crafting"]
+position = Vector2(-1, 68)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+
+[node name="Stone" type="Sprite2D" parent="Crafting"]
+position = Vector2(0, -69)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Stone2" type="Sprite2D" parent="Crafting"]
+position = Vector2(69, -69)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Stone3" type="Sprite2D" parent="Crafting"]
+position = Vector2(-68, -69)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Object" type="Sprite2D" parent="Crafting"]
+position = Vector2(1, -157)
+scale = Vector2(4, 4)
+texture = ExtResource("5_popxo")
+
+[node name="Crafting2" parent="." instance=ExtResource("3_t0tdk")]
+z_index = 2
+position = Vector2(576, 280)
+
+[node name="Wood" type="Sprite2D" parent="Crafting2"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+
+[node name="Wood2" type="Sprite2D" parent="Crafting2"]
+position = Vector2(-1, 68)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+
+[node name="Stone" type="Sprite2D" parent="Crafting2"]
+position = Vector2(0, -69)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Stone2" type="Sprite2D" parent="Crafting2"]
+position = Vector2(-70, -2)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Stone3" type="Sprite2D" parent="Crafting2"]
+position = Vector2(-68, -69)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Object" type="Sprite2D" parent="Crafting2"]
+position = Vector2(1, -157)
+scale = Vector2(4, 4)
+texture = ExtResource("6_umd56")
+
+[node name="Crafting3" parent="." instance=ExtResource("3_t0tdk")]
+z_index = 2
+position = Vector2(976, 280)
+
+[node name="Wood" type="Sprite2D" parent="Crafting3"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+
+[node name="Wood2" type="Sprite2D" parent="Crafting3"]
+position = Vector2(-1, 68)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+
+[node name="Stone" type="Sprite2D" parent="Crafting3"]
+position = Vector2(0, -69)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Object" type="Sprite2D" parent="Crafting3"]
+position = Vector2(1, -157)
+scale = Vector2(4, 4)
+texture = ExtResource("7_iol0k")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.5
+offset_top = 15.0
+offset_right = 98.5
+offset_bottom = 85.0
+grow_horizontal = 2
+theme = ExtResource("2_b4fxf")
+theme_override_font_sizes/font_size = 51
+text = "RECIPES"
+horizontal_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-42.92, 0)
+
+[node name="Stone" type="Sprite2D" parent="Node2D"]
+position = Vector2(106, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 1
+
+[node name="Stone3" type="Sprite2D" parent="Node2D"]
+position = Vector2(241.87, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("5_popxo")
+
+[node name="Stone4" type="Sprite2D" parent="Node2D"]
+position = Vector2(301.385, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("6_umd56")
+
+[node name="Stone5" type="Sprite2D" parent="Node2D"]
+position = Vector2(366.01, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("7_iol0k")
+
+[node name="Stone2" type="Sprite2D" parent="Node2D"]
+position = Vector2(176, 475)
+scale = Vector2(2, 2)
+texture = ExtResource("7_4fyrt")
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(335.765, 0)
+
+[node name="Stone" type="Sprite2D" parent="Node2D2"]
+position = Vector2(106, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 2
+
+[node name="Stone3" type="Sprite2D" parent="Node2D2"]
+position = Vector2(241.87, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("8_wi5fm")
+
+[node name="Stone4" type="Sprite2D" parent="Node2D2"]
+position = Vector2(301.385, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("9_bqwr5")
+
+[node name="Stone5" type="Sprite2D" parent="Node2D2"]
+position = Vector2(366.01, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("11_3bear")
+
+[node name="Stone2" type="Sprite2D" parent="Node2D2"]
+position = Vector2(176, 475)
+scale = Vector2(2, 2)
+texture = ExtResource("7_4fyrt")
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(744.805, 0)
+
+[node name="Stone" type="Sprite2D" parent="Node2D3"]
+position = Vector2(106, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("4_u636o")
+hframes = 4
+frame = 3
+
+[node name="Stone3" type="Sprite2D" parent="Node2D3"]
+position = Vector2(241.87, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("10_6vbwo")
+
+[node name="Stone4" type="Sprite2D" parent="Node2D3"]
+position = Vector2(301.385, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("11_um56j")
+
+[node name="Stone5" type="Sprite2D" parent="Node2D3"]
+position = Vector2(366.01, 475)
+scale = Vector2(3, 3)
+texture = ExtResource("10_6vbwo")
+
+[node name="Stone2" type="Sprite2D" parent="Node2D3"]
+position = Vector2(176, 475)
+scale = Vector2(2, 2)
+texture = ExtResource("7_4fyrt")
+
+[connection signal="pressed" from="ColorRect/CloseBtn" to="." method="_on_close_btn_pressed"]

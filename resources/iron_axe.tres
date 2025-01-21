@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://viokjch0on1p"]
+
+[ext_resource type="Script" path="res://scripts/resources_beans/recipe.gd" id="1_hnuyf"]
+[ext_resource type="Texture2D" uid="uid://blgcgcb658s5o" path="res://assets/sprites/items/iron_axe.png" id="2_lsfk7"]
+
+[resource]
+script = ExtResource("1_hnuyf")
+name = "Iron Axe"
+level = 2
+sprite = ExtResource("2_lsfk7")
+recipe = Array[int]([-1, 2, 2, -1, 0, 2, -1, 0, -1])
+recipe_alt = Array[int]([2, 2, -1, 2, 0, -1, -1, 0, -1])
+price = 20

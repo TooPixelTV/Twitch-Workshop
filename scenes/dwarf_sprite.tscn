@@ -1,0 +1,99 @@
+[gd_scene load_steps=17 format=3 uid="uid://dsi8xfmo4pwvn"]
+
+[ext_resource type="Script" path="res://scripts/dwarf_sprite.gd" id="1_l28we"]
+[ext_resource type="Texture2D" uid="uid://c44eeaku3cs55" path="res://assets/sprites/dwarfs/hair1.png" id="2_aomov"]
+[ext_resource type="Texture2D" uid="uid://bufx2u0hqq4c3" path="res://assets/sprites/dwarfs/body.png" id="2_rjcxb"]
+[ext_resource type="Texture2D" uid="uid://blajjjq1vqiic" path="res://assets/sprites/dwarfs/hair2.png" id="3_k5qah"]
+[ext_resource type="Texture2D" uid="uid://8wtomrvkrget" path="res://assets/sprites/dwarfs/hair3.png" id="4_rbh3a"]
+[ext_resource type="Texture2D" uid="uid://cupqunrwikjuq" path="res://assets/sprites/dwarfs/hair4.png" id="5_ab2f5"]
+[ext_resource type="Texture2D" uid="uid://crngrk3rdqqdr" path="res://assets/sprites/dwarfs/hair5.png" id="6_eubw6"]
+[ext_resource type="Texture2D" uid="uid://bgmpswe0s5r15" path="res://assets/sprites/dwarfs/hair6.png" id="7_tieuk"]
+[ext_resource type="Texture2D" uid="uid://repwumhshdo3" path="res://assets/sprites/dwarfs/beard1.png" id="8_v7jak"]
+[ext_resource type="Texture2D" uid="uid://bd5ubutn6wvye" path="res://assets/sprites/dwarfs/beard2.png" id="9_5n2wp"]
+[ext_resource type="Texture2D" uid="uid://ir2nktyq52l8" path="res://assets/sprites/dwarfs/beard3.png" id="10_1knsu"]
+[ext_resource type="Texture2D" uid="uid://tawtkjgb5gxs" path="res://assets/sprites/dwarfs/beard4.png" id="11_6wc6r"]
+[ext_resource type="Texture2D" uid="uid://dimlhimayr37j" path="res://assets/sprites/dwarfs/beard5.png" id="12_cfpn1"]
+
+[sub_resource type="Animation" id="Animation_dswm6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wd4e4"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.466667, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -16), Vector2(0, -18), Vector2(-3, -16), Vector2(0, -18), Vector2(3, -16), Vector2(0, -16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_si6ya"]
+_data = {
+"RESET": SubResource("Animation_dswm6"),
+"walk": SubResource("Animation_wd4e4")
+}
+
+[node name="DwarfSprite" type="Node2D"]
+position = Vector2(0, -16)
+script = ExtResource("1_l28we")
+hair_sprites = Array[Texture2D]([ExtResource("2_aomov"), ExtResource("3_k5qah"), ExtResource("4_rbh3a"), ExtResource("5_ab2f5"), ExtResource("6_eubw6"), ExtResource("7_tieuk")])
+beard_sprites = Array[Texture2D]([ExtResource("8_v7jak"), ExtResource("9_5n2wp"), ExtResource("10_1knsu"), ExtResource("11_6wc6r"), ExtResource("12_cfpn1")])
+metadata/_edit_group_ = true
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_rjcxb")
+
+[node name="Beard" type="Sprite2D" parent="."]
+visible = false
+
+[node name="Hair" type="Sprite2D" parent="."]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_si6ya")
+}
+speed_scale = 2.0

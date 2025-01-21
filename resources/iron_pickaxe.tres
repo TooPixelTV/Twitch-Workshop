@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://cx1rtfa7k8nd8"]
+
+[ext_resource type="Script" path="res://scripts/resources_beans/recipe.gd" id="1_0g6rr"]
+[ext_resource type="Texture2D" uid="uid://g6jhvj5ta2kj" path="res://assets/sprites/items/iron_pickaxe.png" id="2_kluko"]
+
+[resource]
+script = ExtResource("1_0g6rr")
+name = "Stone Pickaxe"
+level = 2
+sprite = ExtResource("2_kluko")
+recipe = Array[int]([2, 2, 2, -1, 0, -1, -1, 0, -1])
+recipe_alt = Array[int]([])
+price = 20

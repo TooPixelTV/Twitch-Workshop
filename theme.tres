@@ -1,0 +1,54 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ht1daejqgh1i"]
+
+[ext_resource type="FontFile" uid="uid://cf2hajc44v2mw" path="res://assets/fonts/Super Cartoon.ttf" id="1_d6epm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nuc8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u15gi"]
+bg_color = Color(0.329412, 0.133333, 0.133333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.776471, 0.462745, 0.313726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqjyw"]
+bg_color = Color(0.38, 0.2014, 0.152, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.776471, 0.462745, 0.313726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rn13v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdf00"]
+content_margin_top = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.776471, 0.462745, 0.313726, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.329412, 0.133333, 0.133333, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[resource]
+Button/fonts/font = ExtResource("1_d6epm")
+Button/styles/focus = SubResource("StyleBoxEmpty_2nuc8")
+Button/styles/hover = SubResource("StyleBoxFlat_u15gi")
+Button/styles/normal = SubResource("StyleBoxFlat_u15gi")
+Button/styles/pressed = SubResource("StyleBoxFlat_pqjyw")
+Label/fonts/font = ExtResource("1_d6epm")
+LineEdit/font_sizes/font_size = 25
+LineEdit/fonts/font = ExtResource("1_d6epm")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_rn13v")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_rdf00")

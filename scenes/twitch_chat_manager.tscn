@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dotu8doe5kef3"]
+
+[ext_resource type="Script" path="res://scripts/twitch_chat_manager.gd" id="1_qt266"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="2_wgk0k"]
+
+[node name="TwitchChatManager" type="CanvasLayer"]
+script = ExtResource("1_qt266")
+
+[node name="ConnectUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectUI"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -14.0
+offset_right = 150.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="TwichChannelLabel" type="Label" parent="ConnectUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wgk0k")
+theme_override_colors/font_color = Color(0.560784, 0.337255, 0.231373, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 40
+text = "Enter Twitch Channel :"
+horizontal_alignment = 1
+
+[node name="TwitchChannelInput" type="LineEdit" parent="ConnectUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wgk0k")
+placeholder_text = "Twitch channel"
+alignment = 1
+
+[node name="ConnectBtn" type="Button" parent="ConnectUI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("2_wgk0k")
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[connection signal="text_submitted" from="ConnectUI/VBoxContainer/TwitchChannelInput" to="." method="_on_twitch_channel_input_text_submitted"]
+[connection signal="pressed" from="ConnectUI/VBoxContainer/ConnectBtn" to="." method="_on_connect_btn_pressed"]

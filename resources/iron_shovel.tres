@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://dhai8ewoopkva"]
+
+[ext_resource type="Script" path="res://scripts/resources_beans/recipe.gd" id="1_ce45i"]
+[ext_resource type="Texture2D" uid="uid://b620ov6un33it" path="res://assets/sprites/items/iron_shovel.png" id="2_3sp0g"]
+
+[resource]
+script = ExtResource("1_ce45i")
+name = "Stone Shovel"
+level = 2
+sprite = ExtResource("2_3sp0g")
+recipe = Array[int]([-1, 2, -1, -1, 0, -1, -1, 0, -1])
+recipe_alt = Array[int]([])
+price = 10

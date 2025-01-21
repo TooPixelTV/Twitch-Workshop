@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://ciw6utfda3mx3"]
+
+[ext_resource type="Script" path="res://scripts/worker.gd" id="1_5enl0"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="2_m8j41"]
+[ext_resource type="PackedScene" uid="uid://dsi8xfmo4pwvn" path="res://scenes/dwarf_sprite.tscn" id="2_vppfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gt7gv"]
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_insot"]
+bg_color = Color(0.766131, 1.58831e-06, 0.456515, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j7j4"]
+size = Vector2(26, 40)
+
+[node name="Worker" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_5enl0")
+
+[node name="ActionProgress" type="ProgressBar" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -70.0
+offset_right = 30.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_gt7gv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_insot")
+show_percentage = false
+
+[node name="WorkerName" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.5
+offset_top = -50.0
+offset_right = 20.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_m8j41")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "TEST"
+horizontal_alignment = 1
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="DwarfSprite" parent="." instance=ExtResource("2_vppfx")]
+scale = Vector2(2.5, 2.5)
+look_left = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_7j7j4")
+
+[node name="ActionSFX" type="AudioStreamPlayer" parent="."]
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="."]
+
+[node name="RepeatSFX" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
+[connection signal="timeout" from="RepeatSFX" to="." method="_on_repeat_sfx_timeout"]

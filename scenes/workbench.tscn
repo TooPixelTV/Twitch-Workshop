@@ -1,0 +1,296 @@
+[gd_scene load_steps=20 format=4 uid="uid://duwpubiqcdiky"]
+
+[ext_resource type="Script" path="res://scripts/workbench.gd" id="1_flovc"]
+[ext_resource type="Script" path="res://scripts/resources_beans/recipe.gd" id="2_jxy8v"]
+[ext_resource type="PackedScene" uid="uid://ywcdnehkuc66" path="res://scenes/crafting.tscn" id="2_rx5de"]
+[ext_resource type="Resource" uid="uid://cirb0nxurh2cx" path="res://resources/stone_axe.tres" id="3_ofikx"]
+[ext_resource type="PackedScene" uid="uid://b4ulmk10yu8dg" path="res://scenes/ressource_stack.tscn" id="3_wes1f"]
+[ext_resource type="Resource" uid="uid://cpx8rljpbcrtk" path="res://resources/stone_pickaxe.tres" id="4_n0n2x"]
+[ext_resource type="Resource" uid="uid://viokjch0on1p" path="res://resources/iron_axe.tres" id="5_5pfi6"]
+[ext_resource type="Texture2D" uid="uid://brfep867ex8oc" path="res://assets/sprites/resource_frame.png" id="6_3l47p"]
+[ext_resource type="Texture2D" uid="uid://buhloyla2i4wm" path="res://assets/sprites/workbench_bg.png" id="6_ns6vv"]
+[ext_resource type="Texture2D" uid="uid://0anlivxudh5r" path="res://assets/sprites/tileset.png" id="7_x4hre"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="9_e25p3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jj1dy"]
+texture = ExtResource("6_3l47p")
+separation = Vector2i(1, 1)
+texture_region_size = Vector2i(10, 10)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_xl7jb"]
+tile_size = Vector2i(10, 10)
+terrain_set_0/mode = 1
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_jj1dy")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0foh"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve" id="Curve_aj5lx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_yvew0"]
+offsets = PackedFloat32Array(0, 0.870079, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_i46v6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CraftingResultSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sjxbc"]
+resource_name = "drop_success"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CraftingResultSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_maokj"]
+_data = {
+"RESET": SubResource("Animation_i46v6"),
+"drop_success": SubResource("Animation_sjxbc")
+}
+
+[node name="Workbench" type="Node2D"]
+script = ExtResource("1_flovc")
+recipes = Array[ExtResource("2_jxy8v")]([ExtResource("3_ofikx"), ExtResource("4_n0n2x"), ExtResource("5_5pfi6")])
+
+[node name="WorkbenchI" type="TextureRect" parent="."]
+z_index = 2
+offset_right = 352.0
+offset_bottom = 648.0
+texture = ExtResource("6_ns6vv")
+
+[node name="UIBackground" type="TileMapLayer" parent="."]
+z_index = 2
+position = Vector2(1, 25)
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAANAAMAAAACAAIAAAANAAIAAAACAAEAAAANAAEAAAACAAEAAAANAAAAAAACAAEAAAAMAAMAAAABAAIAAAAMAAIAAAABAAEAAAAMAAEAAAABAAEAAAAMAAAAAAABAAEAAAALAAMAAAABAAIAAAALAAIAAAABAAEAAAALAAEAAAABAAEAAAALAAAAAAABAAEAAAAKAAMAAAABAAIAAAAKAAIAAAABAAEAAAAKAAEAAAABAAEAAAAKAAAAAAABAAEAAAAJAAMAAAABAAIAAAAJAAIAAAABAAEAAAAJAAEAAAABAAEAAAAJAAAAAAABAAEAAAAIAAMAAAABAAIAAAAIAAIAAAABAAEAAAAIAAEAAAABAAEAAAAIAAAAAAABAAEAAAAHAAMAAAABAAIAAAAHAAIAAAABAAEAAAAHAAEAAAABAAEAAAAHAAAAAAABAAEAAAAGAAMAAAABAAIAAAAGAAIAAAABAAEAAAAGAAEAAAABAAEAAAAGAAAAAAABAAEAAAAFAAMAAAABAAIAAAAFAAIAAAABAAEAAAAFAAEAAAABAAEAAAAFAAAAAAABAAEAAAAEAAMAAAABAAIAAAAEAAIAAAABAAEAAAAEAAEAAAABAAEAAAAEAAAAAAABAAEAAAADAAMAAAABAAIAAAADAAIAAAABAAEAAAADAAEAAAABAAEAAAADAAAAAAABAAEAAAACAAMAAAABAAIAAAACAAIAAAABAAEAAAACAAEAAAABAAEAAAACAAAAAAABAAEAAAABAAMAAAABAAIAAAABAAIAAAABAAEAAAABAAEAAAABAAEAAAABAAAAAAABAAEAAAAAAAMAAAAAAAIAAAAAAAIAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAEAAAALAA4AAAABAAIAAAALAA0AAAABAAEAAAALAAwAAAABAAEAAAALAAsAAAABAAEAAAALAAoAAAABAAEAAAALAAkAAAABAAEAAAALAAgAAAABAAEAAAALAAcAAAABAAEAAAAKAA4AAAABAAIAAAAKAA0AAAABAAEAAAAKAAwAAAABAAEAAAAKAAsAAAABAAEAAAAKAAoAAAABAAEAAAAKAAkAAAABAAEAAAAKAAgAAAABAAEAAAAKAAcAAAABAAEAAAAJAA4AAAABAAIAAAAJAA0AAAABAAEAAAAJAAwAAAABAAEAAAAJAAsAAAABAAEAAAAJAAoAAAABAAEAAAAJAAkAAAABAAEAAAAJAAgAAAABAAEAAAAJAAcAAAABAAEAAAAIAA4AAAABAAIAAAAIAA0AAAABAAEAAAAIAAwAAAABAAEAAAAIAAsAAAABAAEAAAAIAAoAAAABAAEAAAAIAAkAAAABAAEAAAAIAAgAAAABAAEAAAAIAAcAAAABAAEAAAAHAA4AAAABAAIAAAAHAA0AAAABAAEAAAAHAAwAAAABAAEAAAAHAAsAAAABAAEAAAAHAAoAAAABAAEAAAAHAAkAAAABAAEAAAAHAAgAAAABAAEAAAAHAAcAAAABAAEAAAAGAA4AAAABAAIAAAAGAA0AAAABAAEAAAAGAAwAAAABAAEAAAAGAAsAAAABAAEAAAAGAAoAAAABAAEAAAAGAAkAAAABAAEAAAAGAAgAAAABAAEAAAAGAAcAAAABAAEAAAAFAA4AAAABAAIAAAAFAA0AAAABAAEAAAAFAAwAAAABAAEAAAAFAAsAAAABAAEAAAAFAAoAAAABAAEAAAAFAAkAAAABAAEAAAAFAAgAAAABAAEAAAAFAAcAAAABAAEAAAAEAA4AAAAAAAIAAAAEAA0AAAAAAAEAAAAEAAwAAAAAAAEAAAAEAAsAAAAAAAEAAAAEAAoAAAAAAAEAAAAEAAkAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAcAAAAAAAEAAAAAAP//AAAAAAAAAAABAP//AAABAAAAAAACAP//AAABAAAAAAADAP//AAABAAAAAAAEAP//AAABAAAAAAAFAP//AAABAAAAAAAGAP//AAABAAAAAAAHAP//AAABAAAAAAAIAP//AAABAAAAAAAJAP//AAABAAAAAAAKAP//AAABAAAAAAALAP//AAABAAAAAAAMAP//AAABAAAAAAANAP//AAACAAAAAAAEAAYAAAAAAAEAAAAFAAYAAAABAAEAAAAGAAYAAAABAAEAAAAHAAYAAAABAAEAAAAIAAYAAAABAAEAAAAJAAYAAAABAAEAAAAKAAYAAAABAAEAAAALAAYAAAABAAEAAAAEAAUAAAAAAAAAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAABAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAANAAUAAAACAAAAAAANAAYAAAACAAEAAAANAAcAAAACAAEAAAANAAgAAAACAAEAAAANAAkAAAACAAEAAAAMAAkAAAABAAEAAAAMAAoAAAABAAEAAAAMAAsAAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAANAA0AAAACAAEAAAANAA4AAAACAAIAAAAMAA4AAAABAAIAAAANAAwAAAACAAEAAAANAAsAAAACAAEAAAANAAoAAAACAAEAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAAMAAgAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_xl7jb")
+
+[node name="UIBackground2" type="TileMapLayer" parent="."]
+z_index = 2
+position = Vector2(-20, 85)
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAABAAgAAAAAAAAAAAABAAkAAAAAAAEAAAACAAkAAAABAAEAAAACAAoAAAABAAEAAAADAAoAAAABAAEAAAAEAAoAAAACAAEAAAAEAAkAAAACAAEAAAAEAAgAAAACAAAAAAADAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAkAAAABAAEAAAABAAoAAAAAAAEAAAACAAsAAAABAAIAAAADAAsAAAABAAIAAAABAAsAAAAAAAIAAAAEAAsAAAACAAIAAAA=")
+tile_set = SubResource("TileSet_xl7jb")
+
+[node name="Inventory" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Wood" parent="Inventory" instance=ExtResource("3_wes1f")]
+position = Vector2(56, 68)
+
+[node name="Label" type="Label" parent="Inventory/Wood"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 22.0
+offset_right = 24.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = ExtResource("9_e25p3")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "!wood"
+horizontal_alignment = 1
+
+[node name="Stone" parent="Inventory" instance=ExtResource("3_wes1f")]
+position = Vector2(136, 68)
+ressource_type = 1
+
+[node name="Label" type="Label" parent="Inventory/Stone"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 22.0
+offset_right = 24.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = ExtResource("9_e25p3")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "!stone"
+horizontal_alignment = 1
+
+[node name="Iron" parent="Inventory" instance=ExtResource("3_wes1f")]
+position = Vector2(216, 68)
+ressource_type = 2
+
+[node name="Label" type="Label" parent="Inventory/Iron"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 22.0
+offset_right = 24.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = ExtResource("9_e25p3")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "!iron"
+horizontal_alignment = 1
+
+[node name="Gold" parent="Inventory" instance=ExtResource("3_wes1f")]
+position = Vector2(296, 68)
+ressource_type = 3
+
+[node name="Label" type="Label" parent="Inventory/Gold"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 22.0
+offset_right = 24.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme = ExtResource("9_e25p3")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 18
+text = "!gold"
+horizontal_alignment = 1
+
+[node name="Crafting" parent="." instance=ExtResource("2_rx5de")]
+z_index = 2
+position = Vector2(226, 280)
+
+[node name="CraftingResult" type="Node2D" parent="."]
+z_index = 2
+position = Vector2(55, 340)
+metadata/_edit_group_ = true
+
+[node name="CraftResultBackground" type="Sprite2D" parent="CraftingResult"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_x4hre")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="CraftResultElement" type="Area2D" parent="CraftingResult"]
+z_index = 1
+
+[node name="CraftingResultSprite" type="Sprite2D" parent="CraftingResult/CraftResultElement"]
+scale = Vector2(2.5, 2.5)
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingResult/CraftResultElement"]
+shape = SubResource("RectangleShape2D_v0foh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CraftingResult/CraftResultElement"]
+emitting = false
+amount = 150
+lifetime = 0.7
+one_shot = true
+speed_scale = 1.7
+explosiveness = 1.0
+randomness = 0.8
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 7.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_aj5lx")
+color_ramp = SubResource("Gradient_yvew0")
+
+[node name="CraftResultAnimation" type="AnimationPlayer" parent="CraftingResult/CraftResultElement"]
+libraries = {
+"": SubResource("AnimationLibrary_maokj")
+}
+
+[connection signal="craft_updated" from="Crafting" to="." method="_on_crafting_craft_updated"]
+[connection signal="input_event" from="CraftingResult/CraftResultElement" to="." method="_on_craft_result_element_input_event"]

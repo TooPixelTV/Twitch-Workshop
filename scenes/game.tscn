@@ -1,0 +1,131 @@
+[gd_scene load_steps=23 format=3 uid="uid://cw18afg4qar3a"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_6a6ur"]
+[ext_resource type="PackedScene" uid="uid://tltxalwki574" path="res://scenes/workshop.tscn" id="1_csdcb"]
+[ext_resource type="PackedScene" uid="uid://cddnfvs01843x" path="res://scenes/workers.tscn" id="2_2g3d3"]
+[ext_resource type="PackedScene" uid="uid://duwpubiqcdiky" path="res://scenes/workbench.tscn" id="2_mlgiv"]
+[ext_resource type="Script" path="res://scripts/resources_beans/recipe.gd" id="4_vj6vc"]
+[ext_resource type="Resource" uid="uid://cirb0nxurh2cx" path="res://resources/stone_axe.tres" id="5_ej7al"]
+[ext_resource type="Resource" uid="uid://cpx8rljpbcrtk" path="res://resources/stone_pickaxe.tres" id="6_5vain"]
+[ext_resource type="Resource" uid="uid://viokjch0on1p" path="res://resources/iron_axe.tres" id="7_4viee"]
+[ext_resource type="Resource" uid="uid://cx1rtfa7k8nd8" path="res://resources/iron_pickaxe.tres" id="8_gxaxd"]
+[ext_resource type="Resource" uid="uid://cgnbmqe155a7w" path="res://resources/stone_shovel.tres" id="8_j2p35"]
+[ext_resource type="Resource" uid="uid://xq7gu6d80n6a" path="res://resources/gold_axe.tres" id="9_3ydqv"]
+[ext_resource type="Resource" uid="uid://dhai8ewoopkva" path="res://resources/iron_shovel.tres" id="10_6xqw5"]
+[ext_resource type="Resource" uid="uid://cxoifli3g2myq" path="res://resources/gold_pickaxe.tres" id="10_hl04t"]
+[ext_resource type="Script" path="res://scripts/game_ui.gd" id="11_gaeo1"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="12_ntict"]
+[ext_resource type="Texture2D" uid="uid://cwoqk6dwjor06" path="res://assets/sprites/separators.png" id="12_okv5o"]
+[ext_resource type="Resource" uid="uid://c7osanpipqteb" path="res://resources/gold_shovel.tres" id="14_he1db"]
+[ext_resource type="Script" path="res://scripts/sfx.gd" id="14_lcrqi"]
+[ext_resource type="Texture2D" uid="uid://flortoxxmc2j" path="res://assets/sprites/book.png" id="14_olfky"]
+[ext_resource type="Texture2D" uid="uid://brmt4subl8v42" path="res://assets/sprites/money.png" id="14_tv6no"]
+[ext_resource type="PackedScene" uid="uid://dv7qyxejeg7pd" path="res://scenes/recipes.tscn" id="16_2ilbr"]
+[ext_resource type="PackedScene" uid="uid://dr16wf404gerx" path="res://scenes/game_over.tscn" id="18_yrsd6"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_6a6ur")
+
+[node name="Workers" parent="." instance=ExtResource("2_2g3d3")]
+
+[node name="Workshop" parent="." node_paths=PackedStringArray("workbench") instance=ExtResource("1_csdcb")]
+workbench = NodePath("../Workbench")
+
+[node name="Workbench" parent="." instance=ExtResource("2_mlgiv")]
+position = Vector2(800, 0)
+recipes = Array[ExtResource("4_vj6vc")]([ExtResource("5_ej7al"), ExtResource("6_5vain"), ExtResource("8_j2p35"), ExtResource("7_4viee"), ExtResource("8_gxaxd"), ExtResource("10_6xqw5"), ExtResource("9_3ydqv"), ExtResource("10_hl04t"), ExtResource("14_he1db")])
+
+[node name="TimeTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("11_gaeo1")
+
+[node name="Timer" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -513.0
+offset_top = 22.0
+offset_right = -453.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme = ExtResource("12_ntict")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RecipeBtn" type="Button" parent="UI"]
+z_index = 2
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = -462.0
+offset_right = 320.0
+offset_bottom = -382.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("12_ntict")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/RecipeBtn"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("14_olfky")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 350.0
+offset_right = 450.0
+offset_bottom = 70.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_tv6no")
+expand_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("12_ntict")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 38
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+texture = ExtResource("12_okv5o")
+metadata/_edit_lock_ = true
+
+[node name="MainSFX" type="AudioStreamPlayer" parent="."]
+script = ExtResource("14_lcrqi")
+
+[node name="NewCustomerSFX" type="AudioStreamPlayer" parent="MainSFX"]
+
+[node name="ResourceSFX" type="AudioStreamPlayer" parent="MainSFX"]
+volume_db = -4.0
+
+[node name="PenaltySFX" type="AudioStreamPlayer" parent="MainSFX"]
+
+[node name="Recipes" parent="." instance=ExtResource("16_2ilbr")]
+unique_name_in_owner = true
+visible = false
+
+[node name="GameOver" parent="." instance=ExtResource("18_yrsd6")]
+visible = false
+
+[connection signal="timeout" from="TimeTimer" to="UI" method="_on_time_timer_timeout"]
+[connection signal="pressed" from="UI/RecipeBtn" to="UI" method="_on_recipe_btn_pressed"]

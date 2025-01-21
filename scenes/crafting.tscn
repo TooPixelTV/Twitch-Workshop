@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://ywcdnehkuc66"]
+
+[ext_resource type="Script" path="res://scripts/crafting.gd" id="1_7b8sq"]
+[ext_resource type="PackedScene" uid="uid://bnplqis0cllwn" path="res://scenes/craft_slot.tscn" id="2_sfsqs"]
+
+[node name="Crafting" type="Node2D"]
+script = ExtResource("1_7b8sq")
+
+[node name="CraftSlot1_1" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(-69, -69)
+
+[node name="CraftSlot1_2" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(0, -69)
+pos_x = 1
+
+[node name="CraftSlot1_3" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(69, -69)
+pos_x = 2
+
+[node name="CraftSlot2_1" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(-69, 0)
+pos_y = 1
+
+[node name="CraftSlot2_2" parent="." instance=ExtResource("2_sfsqs")]
+pos_x = 1
+pos_y = 1
+
+[node name="CraftSlot2_3" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(69, 0)
+pos_x = 2
+pos_y = 1
+
+[node name="CraftSlot3_1" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(-69, 69)
+pos_y = 2
+
+[node name="CraftSlot3_2" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(0, 69)
+pos_x = 1
+pos_y = 2
+
+[node name="CraftSlot3_3" parent="." instance=ExtResource("2_sfsqs")]
+position = Vector2(69, 69)
+pos_x = 2
+pos_y = 2

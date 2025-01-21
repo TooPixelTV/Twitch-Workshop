@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://cirb0nxurh2cx"]
+
+[ext_resource type="Script" path="res://scripts/resources_beans/recipe.gd" id="1_f0h5p"]
+[ext_resource type="Texture2D" uid="uid://dmd1gc5i3n2db" path="res://assets/sprites/items/stone_axe.png" id="2_utssv"]
+
+[resource]
+script = ExtResource("1_f0h5p")
+name = "Stone Axe"
+level = 1
+sprite = ExtResource("2_utssv")
+recipe = Array[int]([-1, 1, 1, -1, 0, 1, -1, 0, -1])
+recipe_alt = Array[int]([1, 1, -1, 1, 0, -1, -1, 0, -1])
+price = 10

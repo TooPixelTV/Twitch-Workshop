@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr16wf404gerx"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_t4v17"]
+[ext_resource type="AudioStream" uid="uid://dj06qp8y167t3" path="res://assets/audio/game_over.wav" id="2_33nnh"]
+[ext_resource type="Theme" uid="uid://ht1daejqgh1i" path="res://theme.tres" id="2_laorg"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_t4v17")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4, 0.2232, 0.192, 0.843137)
+
+[node name="GameOverLabel" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 86.17
+offset_bottom = 191.17
+grow_horizontal = 2
+theme = ExtResource("2_laorg")
+theme_override_font_sizes/font_size = 100
+text = "Game Over !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartBtn" type="Button" parent="."]
+process_mode = 3
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -15.78
+offset_right = 200.0
+offset_bottom = 75.22
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_laorg")
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
+[node name="GameOverSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_33nnh")
+volume_db = -2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -104.11
+offset_right = 189.5
+offset_bottom = -41.11
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ScoreText" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_laorg")
+theme_override_font_sizes/font_size = 45
+text = "Money earned : "
+
+[node name="ScoreValue" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_laorg")
+theme_override_font_sizes/font_size = 45
+text = "0"
+
+[connection signal="pressed" from="RestartBtn" to="." method="_on_restart_btn_pressed"]

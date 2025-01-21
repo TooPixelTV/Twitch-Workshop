@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://tltxalwki574"]
+
+[ext_resource type="Script" path="res://scripts/workshop.gd" id="1_lxkl1"]
+[ext_resource type="Script" path="res://scripts/penalties.gd" id="2_j5r4a"]
+[ext_resource type="Texture2D" uid="uid://dsuawnw7t1omp" path="res://assets/workshop.png" id="2_r242t"]
+[ext_resource type="Texture2D" uid="uid://3xe77qsygr1p" path="res://assets/sprites/penalty_slot.png" id="3_dqy60"]
+[ext_resource type="Texture2D" uid="uid://dprfcbq546yer" path="res://assets/workshop_desk.png" id="3_p8ol7"]
+[ext_resource type="Texture2D" uid="uid://dg7qpnxtrd7ig" path="res://assets/sprites/penalty_filled.png" id="4_obfjw"]
+
+[node name="Workshop" type="Node2D"]
+script = ExtResource("1_lxkl1")
+
+[node name="WorkshopBg" type="TextureRect" parent="."]
+offset_right = 800.0
+offset_bottom = 500.0
+texture = ExtResource("2_r242t")
+
+[node name="CustomerSlots" type="Node" parent="."]
+
+[node name="Slot1" type="Marker2D" parent="CustomerSlots"]
+position = Vector2(133, 400)
+
+[node name="Slot2" type="Marker2D" parent="CustomerSlots"]
+position = Vector2(399, 400)
+
+[node name="Slot3" type="Marker2D" parent="CustomerSlots"]
+position = Vector2(665, 400)
+
+[node name="WorkshopDesk" type="Sprite2D" parent="."]
+z_index = 1
+z_as_relative = false
+scale = Vector2(4, 4)
+texture = ExtResource("3_p8ol7")
+centered = false
+
+[node name="Penalties" type="HBoxContainer" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 38.0
+offset_bottom = 36.0
+scale = Vector2(3, 3)
+script = ExtResource("2_j5r4a")
+penalty_slot_texture = ExtResource("3_dqy60")
+penalty_filled_texture = ExtResource("4_obfjw")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

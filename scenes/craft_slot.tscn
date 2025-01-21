@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnplqis0cllwn"]
+
+[ext_resource type="Script" path="res://scripts/craft_slot.gd" id="1_0el3w"]
+[ext_resource type="Texture2D" uid="uid://0anlivxudh5r" path="res://assets/sprites/tileset.png" id="2_ips04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aykci"]
+size = Vector2(64, 64)
+
+[node name="CraftSlot" type="Area2D" groups=["craft_slot"]]
+script = ExtResource("1_0el3w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ips04")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aykci")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dib8f0cnp54nq"]
+
+[ext_resource type="Texture2D" uid="uid://bi44fpu1j3gue" path="res://assets/sprites/ressources.png" id="1_ajpv4"]
+[ext_resource type="Script" path="res://scripts/ressource_item.gd" id="1_epsbb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igvvb"]
+size = Vector2(80, 80)
+
+[node name="RessourceItem" type="Area2D"]
+script = ExtResource("1_epsbb")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_ajpv4")
+hframes = 4
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_igvvb")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
