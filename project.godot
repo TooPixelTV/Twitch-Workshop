@@ -26,6 +26,7 @@ BackgroundMusic="*res://utils/background_music/background_music.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://assets/cursor.png"
 
 [editor_plugins]
 
